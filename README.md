@@ -21,13 +21,13 @@ $ , where $m$  is the fully sampled image, $U$  is the corresponding undersampli
 
 The aliased images(Graph 1.2) and fully sampled image(Graph 1.3) are as following.
 
-| **Graph 1.1 undersampling mask for different dynamic frames**                                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![image](E:\ShanghaiTech_Courses\Grade2_Sophomore\spring\Artificial_Intelligence_in_Medical_Imaging\Deep_learning_Dynamic_MRI_Reconstruction\img\image.png)                                   |
-| **Graph 1.2 Aliased images**                                                                                                                                                                  |
-| ![testundersampling7](file://E:\ShanghaiTech_Courses\Grade2_Sophomore\spring\Artificial_Intelligence_in_Medical_Imaging\BME_reprot 2\BME_reprot\test_under_sampling_7.png?msec=1719916244681) |
-| **Graph 1.3 fully sampled image**                                                                                                                                                             |
-| ![testfullsampling7](E:\ShanghaiTech_Courses\Grade2_Sophomore\spring\Artificial_Intelligence_in_Medical_Imaging\Deep_learning_Dynamic_MRI_Reconstruction\img\test_full_sampling.png)          |
+| **Graph 1.1 undersampling mask for different dynamic frames**                     |
+| --------------------------------------------------------------------------------- |
+| ![image](https://cdn.luogu.com.cn/upload/image_hosting/d9163zht.png)              |
+| **Graph 1.2 Aliased images**                                                      |
+| ![testundersampling7](https://cdn.luogu.com.cn/upload/image_hosting/j7rsdvge.png) |
+| **Graph 1.3 fully sampled image**                                                 |
+| ![testfullsampling7](https://cdn.luogu.com.cn/upload/image_hosting/92uhwwav.png)  |
 
 ### 2. Basic Network
 
@@ -49,11 +49,11 @@ However, Stacking also brings some problems. The image is pseudo complex, which 
 
 We choose U-Net as backbone and the model is as following:
 
-![无标题的笔记本 3](E:\ShanghaiTech_Courses\Grade2_Sophomore\spring\Artificial_Intelligence_in_Medical_Imaging\Deep_learning_Dynamic_MRI_Reconstruction\img\network1.jpeg)
+![无标题的笔记本 3](https://cdn.luogu.com.cn/upload/image_hosting/g8b899wj.png)
 
 Noticed that the two U-Net don't share parameters bucause it will decrease the performance of the model. The reason for that may be the Peculiarities of data.
 
-However, we find that the performance of our model is not good enough. Also, the train loss and eval loss are very close, which show that our model maybe can be more complex to improve the performance. Instead of only increase the parameters of U-Net, we add another ResNet network after getting Ouptut of U-Net. The final model is as following:![无标题的笔记本 4](E:\ShanghaiTech_Courses\Grade2_Sophomore\spring\Artificial_Intelligence_in_Medical_Imaging\Deep_learning_Dynamic_MRI_Reconstruction\img\network2.jpeg)
+However, we find that the performance of our model is not good enough. Also, the train loss and eval loss are very close, which show that our model maybe can be more complex to improve the performance. Instead of only increase the parameters of U-Net, we add another ResNet network after getting Ouptut of U-Net. The final model is as following:![无标题的笔记本 4](https://cdn.luogu.com.cn/upload/image_hosting/vqnxwo79.png)
 
 The best performance of our model is as following:
 
@@ -63,11 +63,11 @@ The best performance of our model is as following:
 
 A good reconstructed dynamic image is as following:
 
-| **Before reconstruction**                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![testundersampling7](E:\ShanghaiTech_Courses\Grade2_Sophomore\spring\Artificial_Intelligence_in_Medical_Imaging\Deep_learning_Dynamic_MRI_Reconstruction\img\test_under_sampling.png)  |
-| **After reconstruction**                                                                                                                                                                |
-| ![testreconstruction7](E:\ShanghaiTech_Courses\Grade2_Sophomore\spring\Artificial_Intelligence_in_Medical_Imaging\Deep_learning_Dynamic_MRI_Reconstruction\img\test_reconstruction.png) |
+| **Before reconstruction**                                                          |
+| ---------------------------------------------------------------------------------- |
+| ![testundersampling7](https://cdn.luogu.com.cn/upload/image_hosting/j7rsdvge.png)  |
+| **After reconstruction**                                                           |
+| ![testreconstruction7](https://cdn.luogu.com.cn/upload/image_hosting/3rrds8rh.png) |
 
 We can see that the reconstructed image is veery clear with much details, though the upper right corner of the picture is slightly blurry.
 
@@ -101,7 +101,7 @@ We tried single and many combinations of these transformations but there is no e
 
 Later, we tried dynamic learing rate. We Let the model to warm up in the first 10 epoch and then Cosine Anneal. The graph of learning rate is as following:
 
-![WechatIMG524](E:\ShanghaiTech_Courses\Grade2_Sophomore\spring\Artificial_Intelligence_in_Medical_Imaging\Deep_learning_Dynamic_MRI_Reconstruction\img\learning%20scheduler.png)
+![WechatIMG524](https://cdn.luogu.com.cn/upload/image_hosting/sbdwro2g.png)
 
 Learning rate is a hyperparameter that determines the size of the steps taken during the optimization process of training a neural network. Dynamic learning rate make the learing process more stable and Ultimately converges to a very low loss. If we use constant learning rate, In the later stages of learning, the loss curve may oscillate and be difficult to converge.
 
@@ -127,7 +127,7 @@ python train.py output_folder
 
     After running the above code, you can get undersampling, full sampling and reconstruction images separately in different folders and a file called ***output.txt*** in which the value of loss , PSNR and SSIM are.
 
-    Besides, you can change the parameter value setting in train.py.  Below are our default setting:
+    Besides, you can change the parameter value setting in train.py. Below are our default setting:
 
 ```python
 train(in_channels=20,
