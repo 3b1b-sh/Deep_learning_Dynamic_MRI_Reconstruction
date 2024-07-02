@@ -122,6 +122,17 @@ We also introduce Batch normalization to our model. It improves the training spe
 These experiment investigate the inflution of single technique. It shows that both weight decay and dynamic learning rate help to improve the performance of the model, while only dropout decrease the performance.
 
 ### 4. Quick Start
+1. Download the dataset
+    You can download the dataset from [here](https://drive.google.com/file/d/1heVqEZ549Vf-FO7PPvhrGxTDlfUI0DHQ/view?usp=sharing)
+
+2. Install necessary packages
+- torch
+- tensorboard
+- numpys
+- torchvision
+- matplotlib
+    
+3. Train and test
 
     To run the code, you should enter the following sentences in the terminal:
 
