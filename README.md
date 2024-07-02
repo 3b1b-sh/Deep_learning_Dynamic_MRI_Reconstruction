@@ -16,15 +16,25 @@ Then, we can obtain the aliased images as a result of undersampling with the gen
 
 The aliased images(Graph 1.2) and fully sampled image(Graph 1.3) are as following.
 
-| **Graph 1.1 undersampling mask for different dynamic frames**             |
-| ------------------------------------------------------------------------------- |
+| **Graph 1.1 undersampling mask for different dynamic frames**                     |
+| --------------------------------------------------------------------------------- |
 | ![image](https://cdn.luogu.com.cn/upload/image_hosting/d9163zht.png)              |
-| **Graph 1.2 Aliased images**                                              |
+| **Graph 1.2 Aliased images**                                                      |
 | ![testundersampling7](https://cdn.luogu.com.cn/upload/image_hosting/j7rsdvge.png) |
-| **Graph 1.3 fully sampled image**                                         |
+| **Graph 1.3 fully sampled image**                                                 |
 | ![testfullsampling7](https://cdn.luogu.com.cn/upload/image_hosting/92uhwwav.png)  |
 
 ### 2. Basic Network
+
+Our dataset **cine. npz** is a fully sampled cardiac cine MR images with size of [nsamples, nt, nx, ny]
+- nsamples = 200 is the total number of data samples
+- nt is the number of dynamic frames
+- nx, ny indicates the size of each 2D dynamic image, respectively.
+
+CS_mask.py: generates 2D variable-density undersampling masks for a
+dynamic sequence.
+
+train.py: training and testing the network.
 
 We split the cine dataset into training, validation and testing with a ratio of 4:1:2, which is separately 114, 29 and 57. The code is as following.
 
@@ -52,16 +62,16 @@ However, we find that the performance of our model is not good enough. Also, the
 
 The best performance of our model is as following:
 
-| Loss              | Avg PSNR         | Std PSNR | Avg SSIM        | Std SSIM |
-| ----------------- | ---------------- | -------- | --------------- | -------- |
+| Loss        | Avg PSNR   | Std PSNR | Avg SSIM  | Std SSIM |
+| ----------- | ---------- | -------- | --------- | -------- |
 | **0.00166** | **28.214** | 2.057    | **0.815** | 0.035    |
 
 A good reconstructed dynamic image is as following:
 
-| **Before reconstruction**                                                  |
-| -------------------------------------------------------------------------------- |
+| **Before reconstruction**                                                          |
+| ---------------------------------------------------------------------------------- |
 | ![testundersampling7](https://cdn.luogu.com.cn/upload/image_hosting/j7rsdvge.png)  |
-| **After reconstruction**                                                   |
+| **After reconstruction**                                                           |
 | ![testreconstruction7](https://cdn.luogu.com.cn/upload/image_hosting/3rrds8rh.png) |
 
 We can see that the reconstructed image is veery clear with much details, though the upper right corner of the picture is slightly blurry.
@@ -102,11 +112,11 @@ Learning rate is a hyperparameter that determines the size of the steps taken du
 
 We also introduce Batch normalization to our model. It improves the training speed, stability, and performance. Because removing Batch normalization makes our model very hard to train, **we consider Batch normalization as a defualt setting in following experiment.** It means that the model without optimization also contains Batch normalization. The experiments is as following:
 
-|                            | Loss              | PSNR             | SSIM            |
-| -------------------------- | ----------------- | ---------------- | --------------- |
-| Without optimization       | 0.00226           | 26.921           | 0.770           |
-| With weight decay          | 0.00205           | 27.399           | 0.774           |
-| With dropout               | 0.00239           | 26.426           | 0.739           |
+|                            | Loss        | PSNR       | SSIM      |
+| -------------------------- | ----------- | ---------- | --------- |
+| Without optimization       | 0.00226     | 26.921     | 0.770     |
+| With weight decay          | 0.00205     | 27.399     | 0.774     |
+| With dropout               | 0.00239     | 26.426     | 0.739     |
 | With dynamic learning rate | **0.00198** | **27.493** | **0.780** |
 
 These experiment investigate the inflution of single technique. It shows that both weight decay and dynamic learning rate help to improve the performance of the model, while only dropout decrease the performance.
