@@ -26,7 +26,7 @@ The aliased images(Graph 1.2) and fully sampled images (Graph 1.3) are as follow
 
 ### 2. Basic Network
 
-Our dataset **cine. npz** is a fully sampled cardiac cine MR images with size of [nsamples, nt, nx, ny]
+Our dataset **cine. npz** is a fully sampled cardiac cine MR image with the size of [nsamples, nt, nx, ny]
 - nsamples = 200 is the total number of data samples
 - nt is the number of dynamic frames
 - nx, ny indicate the size of each 2D dynamic image, respectively.
@@ -110,7 +110,7 @@ Later, we tried a dynamic learning rate. We Let the model warm up in the first 1
 
 Learning rate is a hyperparameter that determines the size of the steps taken during the optimization process of training a neural network. Dynamic learning rates make the learning process more stable and Ultimately converge to a very low loss. If we use a constant learning rate, In the later stages of learning, the loss curve may oscillate and be difficult to converge.
 
-We also introduce Batch normalization to our model. It improves the training speed, stability, and performance. Because removing Batch normalization makes our model very hard to train, **we consider Batch normalization as a default setting in the following experiment.** It means that the model without optimization also contains Batch normalization. The experiments is as follows:
+We also introduce Batch normalization to our model. It improves the training speed, stability, and performance. Because removing Batch normalization makes our model very hard to train, **we consider Batch normalization as a default setting in the following experiment.** It means that the model without optimization also contains Batch normalization. The experiments are as follows:
 
 |                            | Loss        | PSNR       | SSIM      |
 | -------------------------- | ----------- | ---------- | --------- |
