@@ -1,4 +1,4 @@
-# Deep learning Dynamic MRI Reconstruction（ShanghaiTech BME1312 23 spring project1)
+# Deep learning Dynamic MRI Reconstruction（ShanghaiTech BME1312 24 spring project1)
 
 ### 1. Accelerated Cine Imaging with Aliasing
 
