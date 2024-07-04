@@ -1,5 +1,7 @@
 # Deep learning Dynamic MRI Reconstruction（ShanghaiTech BME1312 24 spring project1)
 
+**If the project is inspirational and interesting for you, Please give it a star**
+
 ### 1. Accelerated Cine Imaging with Aliasing
 
 The undersampling mask is generated separately for each dynamic frame. We can run the the following code to get the 20 frames dynamic image mask.
