@@ -4,6 +4,42 @@ ShanghaiTech BME1312 24 spring project1
 
 **If you think the project is inspirational or interesting, please give it a star.**
 
+## Quick Start
+1. Download the dataset
+    You can download the dataset from [here](https://drive.google.com/file/d/1heVqEZ549Vf-FO7PPvhrGxTDlfUI0DHQ/view?usp=sharing)
+
+2. Install necessary packages
+- torch
+- tensorboard
+- numpy
+- torchvision
+- matplotlib
+    
+3. Train and test
+
+    To run the code, you should enter the following sentences in the terminal:
+
+```python
+python train.py output_folder
+#output folder is a parameter you can randomly choose
+```
+
+    After running the above code, you can get undersampling, full sampling, and reconstruction images separately in different folders and a file called ***output.txt*** in which the values of loss, PSNR, and SSIM are.
+
+    Besides, you can change the parameter value setting in train.py. Below are our default settings:
+
+```python
+train(in_channels=20,
+      out_channels=20,
+      init_features=64,
+      num_epochs=400,
+      weight_decay=1e-4,
+      batch_size=10,
+      initial_lr=1e-4)
+```
+
+## Main idea
+
 ### 1. Accelerated Cine Imaging with Aliasing
 
 The undersampling mask is generated separately for each dynamic frame. We can run the the following code to get the 20 frames dynamic image mask.
@@ -125,36 +161,4 @@ We also introduce Batch normalization to our model. It improves the training spe
 
 These experiments investigate the inflation of a single technique. It shows that both weight decay and dynamic learning rate help to improve the performance of the model, while only dropout decreases the performance.
 
-### 4. Quick Start
-1. Download the dataset
-    You can download the dataset from [here](https://drive.google.com/file/d/1heVqEZ549Vf-FO7PPvhrGxTDlfUI0DHQ/view?usp=sharing)
 
-2. Install necessary packages
-- torch
-- tensorboard
-- numpy
-- torchvision
-- matplotlib
-    
-3. Train and test
-
-    To run the code, you should enter the following sentences in the terminal:
-
-```python
-python train.py output_folder
-#output folder is a parameter you can randomly choose
-```
-
-    After running the above code, you can get undersampling, full sampling, and reconstruction images separately in different folders and a file called ***output.txt*** in which the values of loss, PSNR, and SSIM are.
-
-    Besides, you can change the parameter value setting in train.py. Below are our default settings:
-
-```python
-train(in_channels=20,
-      out_channels=20,
-      init_features=64,
-      num_epochs=400,
-      weight_decay=1e-4,
-      batch_size=10,
-      initial_lr=1e-4)
-```
